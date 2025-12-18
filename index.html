@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Axiogrid: AI-powered proposal development for government contractors. Generate compliant proposals, accurate BOEs, and winning PTW strategies in minutes.">
+    <title>Axiogrid | AI-Powered Proposal Development for Government Contractors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Palatino+Linotype:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0F172A;
+            --navy-light: #1E293B;
+            --gold: #C9A227;
+            --gold-light: #D4A84B;
+            --cream: #FEF3C7;
+            --white: #FFFFFF;
+            --gray-100: #F8FAFC;
+            --gray-200: #E2E8F0;
+            --gray-400: #94A3B8;
+            --gray-600: #475569;
+            --teal: #0D9488;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Palatino Linotype', 'Palatino', Georgia, serif;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo svg {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Palatino Linotype', 'Palatino', Georgia, serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo-text .axio {
+            color: var(--navy);
+        }
+
+        .logo-text .grid {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 160px 0 100px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--gray-200);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--gray-400);
+            font-size: 14px;
+        }
+
+        .trust-badges span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-badges svg {
+            color: var(--teal);
+        }
+
+        /* Pain Points Section */
+        .pain-points {
+            padding: 100px 0;
+            background: var(--gray-100);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 40px);
+            margin-bottom: 60px;
+            color: var(--navy);
+        }
+
+        .section-title.light {
+            color: var(--white);
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .pain-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--gold);
+        }
+
+        .pain-card .icon {
+            width: 48px;
+            height: 48px;
+            background: var(--cream);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .pain-card .icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+        }
+
+        .pain-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--navy);
+        }
+
+        .pain-card p {
+            color: var(--gray-600);
+            font-size: 15px;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 100px 0;
+            background: var(--navy);
+        }
+
+        .solution-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .solution p {
+            font-size: 20px;
+            color: var(--gray-200);
+            margin-bottom: 24px;
+        }
+
+        .solution .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: var(--navy);
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 auto 24px;
+            font-family: 'Palatino Linotype', serif;
+        }
+
+        .step h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--navy);
+        }
+
+        .step p {
+            color: var(--gray-600);
+            font-size: 15px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--gray-100);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 28px;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card h3 svg {
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .feature-card p {
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        /* Credibility Section */
+        .credibility {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+
+        .credibility-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .credibility p.intro {
+            font-size: 20px;
+            color: var(--gray-200);
+            margin-bottom: 50px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 32px;
+            margin-bottom: 50px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Palatino Linotype', serif;
+        }
+
+        .stat-label {
+            color: var(--gray-200);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .credibility p.story {
+            color: var(--gray-400);
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+
+        .founder {
+            color: var(--gold);
+            font-style: italic;
+            font-size: 18px;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+        }
+
+        .cta-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: var(--navy);
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 12px;
+            max-width: 480px;
+            margin: 0 auto 16px;
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 16px 20px;
+            border: 2px solid var(--navy);
+            border-radius: 6px;
+            font-size: 16px;
+            background: var(--white);
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--navy-light);
+        }
+
+        .email-form button {
+            padding: 16px 32px;
+            white-space: nowrap;
+        }
+
+        .form-note {
+            font-size: 13px;
+            color: var(--navy);
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0 30px;
+            background: var(--navy);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--gray-400);
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact a {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--navy-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: var(--gray-400);
+            font-size: 13px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-legal a:hover {
+            color: var(--gold);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+            color: var(--navy);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .pain-grid, .steps, .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 70 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M35,0 L70,0 L70,50 L35,80 L0,50 L0,0 Z" fill="#0F172A"/>
+                    <path d="M35,6 L64,6 L64,47 L35,73 L6,47 L6,6 Z" stroke="#C9A227" stroke-width="2" fill="none"/>
+                    <line x1="35" y1="12" x2="35" y2="65" stroke="#C9A227" stroke-width="1.5" opacity="0.6"/>
+                    <line x1="12" y1="30" x2="58" y2="30" stroke="#C9A227" stroke-width="1.5" opacity="0.6"/>
+                    <polygon points="35,18 25,50 45,50" fill="none" stroke="#C9A227" stroke-width="2"/>
+                    <line x1="28" y1="40" x2="42" y2="40" stroke="#C9A227" stroke-width="2"/>
+                </svg>
+                <span class="logo-text"><span class="axio">AXIO</span><span class="grid">GRID</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#cta" class="btn btn-primary">Join Waitlist</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Win More Government Contracts.<br><span>Spend Less Time on Proposals.</span></h1>
+                <p>Axiogrid uses AI to generate compliant proposals, accurate BOEs, and winning PTW strategies — built by a 20-year government contracting veteran who's managed $450M+ in federal programs.</p>
+                <div class="hero-buttons">
+                    <a href="#cta" class="btn btn-primary">Join the Early Access Waitlist</a>
+                    <a href="#contact" class="btn btn-outline">Schedule a Call →</a>
+                </div>
+                <div class="trust-badges">
+                    <span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        No credit card required
+                    </span>
+                    <span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        Free for early adopters
+                    </span>
+                    <span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        Limited spots available
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-points">
+        <div class="container">
+            <h2 class="section-title">Sound <span>Familiar?</span></h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3>Days Lost to Compliance Matrices</h3>
+                    <p>Your team spends 40+ hours per proposal manually extracting requirements from Section L, M, and the PWS. One missed "shall" statement can cost you the win.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+                    </div>
+                    <h3>Past Performance Buried in File Shares</h3>
+                    <p>You have a decade of winning proposals, but finding and tailoring relevant past performance for each new bid feels like archaeology.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/></svg>
+                    </div>
+                    <h3>Pricing That's a Shot in the Dark</h3>
+                    <p>Without solid competitive intelligence and historical data, your Price-to-Win is more gut feeling than science. You're leaving money on the table — or losing on price.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <div class="solution-content">
+                <h2 class="section-title light">There's a <span>Better Way</span></h2>
+                <p>Axiogrid combines 20 years of government contracting expertise with advanced AI to automate the most time-consuming parts of proposal development.</p>
+                <p><span class="highlight">Upload your RFP. Get a compliant proposal draft, accurate BOE, and data-driven PTW recommendation — in minutes, not weeks.</span></p>
+                <a href="#how-it-works" class="btn btn-primary" style="margin-top: 20px;">See How It Works ↓</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">From RFP to Proposal-Ready in <span>3 Steps</span></h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Upload Your RFP</h3>
+                    <p>Drop your PDF or Word document. Axiogrid processes the entire solicitation — Section L, M, PWS, attachments, and amendments.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>AI Does the Heavy Lifting</h3>
+                    <p>Our AI extracts every requirement, builds your compliance matrix, identifies evaluation criteria, and matches relevant past performance from your library.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Review and Submit</h3>
+                    <p>Receive draft proposal sections, a detailed BOE breakdown, and PTW analysis. Review, refine, and submit with confidence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Built for <span>Government Contractors</span></h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                        Compliance Matrix Generator
+                    </h3>
+                    <p>Automatically extracts SHALL, SHOULD, and MAY requirements. Maps each to solicitation sections and evaluation factors.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                        BOE Development
+                    </h3>
+                    <p>Generate detailed Basis of Estimate documents with labor categories, hours, rates, and assumptions — calibrated to your cost structure.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        Price-to-Win Analysis
+                    </h3>
+                    <p>Data-driven pricing recommendations based on competitive intelligence, historical wins, and incumbency analysis.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        Past Performance Matching
+                    </h3>
+                    <p>AI scans your past performance library and surfaces the most relevant examples for each requirement.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        Section Drafting
+                    </h3>
+                    <p>Generate compliant first drafts of technical approach, management plan, and staffing sections.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        FAR/DFARS Compliance
+                    </h3>
+                    <p>Built-in knowledge of federal acquisition regulations ensures your proposals meet compliance requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credibility Section -->
+    <section class="credibility" id="about">
+        <div class="container">
+            <div class="credibility-content">
+                <h2 class="section-title light">Built by Someone Who's <span>Been in Your Shoes</span></h2>
+                <p class="intro">Axiogrid was created by a government contracting veteran with over 20 years of experience in capture management, proposal development, and program execution.</p>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Years in GovCon</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">$450M+</div>
+                        <div class="stat-label">Programs Managed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">250+</div>
+                        <div class="stat-label">Professionals Led</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">73%</div>
+                        <div class="stat-label">Win Rate Improvement</div>
+                    </div>
+                </div>
+                <p class="story">From LOGCAP and AFCAP to ODNI and base operations support — we've managed proposals and programs across defense, intelligence, and civilian agencies. Axiogrid exists because we got tired of watching talented teams waste weeks on manual processes that AI can handle in minutes.</p>
+                <p class="founder">— Ardian Terpuni, Founder</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Win More Contracts?</h2>
+                <p>Join our early access waitlist. Limited spots for founding users who'll help shape the product — and get it free.</p>
+                <form class="email-form" action="https://formspree.io/f/your-form-id" method="POST">
+                    <input type="email" name="email" placeholder="Enter your work email" required>
+                    <button type="submit" class="btn btn-secondary">Join Waitlist</button>
+                </form>
+                <p class="form-note">No spam. Unsubscribe anytime. We'll notify you when early access opens.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <svg viewBox="0 0 70 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 40px;">
+                            <path d="M35,0 L70,0 L70,50 L35,80 L0,50 L0,0 Z" fill="#C9A227"/>
+                            <path d="M35,6 L64,6 L64,47 L35,73 L6,47 L6,6 Z" stroke="#0F172A" stroke-width="2" fill="none"/>
+                            <line x1="35" y1="12" x2="35" y2="65" stroke="#0F172A" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="12" y1="30" x2="58" y2="30" stroke="#0F172A" stroke-width="1.5" opacity="0.6"/>
+                            <polygon points="35,18 25,50 45,50" fill="none" stroke="#0F172A" stroke-width="2"/>
+                            <line x1="28" y1="40" x2="42" y2="40" stroke="#0F172A" stroke-width="2"/>
+                        </svg>
+                        <span class="logo-text"><span class="axio" style="color: #C9A227;">AXIO</span><span class="grid" style="color: #fff;">GRID</span></span>
+                    </a>
+                    <p>AI-powered proposal development for government contractors.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#cta">Join Waitlist</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column footer-contact">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:veraterpuni@axiogrid.ai">veraterpuni@axiogrid.ai</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Axiogrid. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
